@@ -28,7 +28,7 @@ audio{
 }
 #woody{
     width: 20%;
-    position:relative;
+    position:absolute;
     left:80%;
     top:10%;
 }
