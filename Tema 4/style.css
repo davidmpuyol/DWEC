@@ -1,0 +1,24 @@
+#principal{
+    width:80%;
+    margin: 0 auto;
+    background-color:lightyellow;
+}
+body{
+    background-color:blue;
+}
+#temas{
+    background-color:lightblue;
+    color:blue;
+    font-size:20px;
+    font-weight:bold;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+#marco{
+    background-color:yellow;
+    border: 2px solid black;
+}
+#invisible{
+    visibility:visible;
+}

@@ -10,17 +10,11 @@ google.charts.load('current', {'packages':['corechart','geochart'],'mapsApiKey':
 
       function drawRegionMap(){
         var data = google.visualization.arrayToDataTable([
-          ['Pais', 'Visitantes'],
-          ['Spain', 87900000],
-          ['France', 85800000],
-          ['United States', 75900000],
-          ['China', 60700000],
-          ['Italy', 58200000],
-          ['Mexico', 39300000],
-          ['GB', 37700000],
-          ['Turkey', 37600000],
-          ['Germany', 37500000],
-          ['Thailand', 35400000],
+          ['Año', 'Poblacion'],
+          ['2011', 34052],
+          ['2015', 12360],
+          ['2017', 4121],
+          ['2019', 1380],
         ]);
         var options = {'title':'Paises más visitados 2017',
                        'width':800,
@@ -59,13 +53,10 @@ google.charts.load('current', {'packages':['corechart','geochart'],'mapsApiKey':
 
         // Instantiate and draw our chart, passing in some options.
         let chart = new google.visualization.ColumnChart(document.getElementById('chart1'))
-        let chart2 = new google.visualization.PieChart(document.getElementById('chart2'));
         chart.draw(data, options);
-        chart2.draw(data, options);
         setTimeout(function(){
           data.setValue(0, 1,20);
           chart.draw(data,options);
-          chart2.draw(data,options);
-        },5000);
+        },6000);
       }
       

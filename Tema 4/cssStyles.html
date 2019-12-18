@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" id="estiloCss" type="text/css" href="style.css" disabled = true>
+    <title>Document</title>
+</head>
+<body>
+    <div id="principal">
+        <div id="temas">
+            <a href="#" id="temaNormal"class="tema" onclick="cambiarEstilo(event)">Tema Normal</a>
+            <a href="#" id="temaMinimalista"class="tema" onclick="cambiarEstilo(event)">Tema Minimalista</a>
+        </div>
+        <br>
+        <h1>Página de ejemplo</h1>
+        <p>En esta página vamos a comprobar lo fácil que es aplicar estilos
+            mediante CSS a un documento seleccionado
+        </p>
+        <p>Lo ideal es que al seleccionar un estilo, éste permanezca siempre igual
+            para el usuario. Hasta ahora no hemos visto como hacerlo, ¿Se te ocurre cómo podremos hacerlo?
+        </p>
+        <p id="invisible" style="visibility:hidden"><b>Este parrafo solo debe ser visible en tema normal</b></p>
+        <div id="marco">
+            <p>Esto está dentro de un marco</p>
+        </div>
+
+    </div>
+    <script src="cssStyles.js"></script>
+</body>
+</html>

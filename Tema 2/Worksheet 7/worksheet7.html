@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+</head>
+<body>
+    <div id="mapid"style="height:300px; width:500px"></div>
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var mymap = L.map('mapid').setView([position.coords.latitude, position.coords.longitude], 13);
+            /*
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGF2aWRtcHV5b2wiLCJhIjoiY2sxOTdmbnZ3MDBkcTNpcGE4b2x4NngyYSJ9.EqWMmI5H1ICfpjfk_ce8_Q', {
+	        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	        maxZoom: 18,
+            id: 'mapbox.streets',
+            */
+            var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+    }).addTo(mymap);
+    var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
+    var circle = L.circle([position.coords.latitude, position.coords.longitude], {
+	    color: 'red',
+	    fillColor: '#f03',
+	    fillOpacity: 0.5,
+	    radius: 70
+    }).addTo(mymap);
+    var polygon = L.polygon([
+	[position.coords.latitude-0.0005, position.coords.longitude+0.0005],
+	[position.coords.latitude-0.0005, position.coords.longitude-0.0005],
+    [position.coords.latitude+0.0005, position.coords.longitude-0.0005],
+    [position.coords.latitude+0.0005, position.coords.longitude+0.0005]
+]).addTo(mymap);
+},function(error){
+    alert("Error al obtener ubicación");
+});
+
+    </script>   
+</body>
+</html>

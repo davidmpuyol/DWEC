@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="imgMove.js"></script>
+    <title>Moving images</title>
+    <style>
+        body{
+            height:100%;
+            width: 100%;
+            background-color: #0fbeee;
+        }
+        #nube1, #nube2,#nube3,#nube4,#nube5{
+            float:left;
+            width: 50px;
+            position:fixed;
+        }
+        #nube1{
+            width:10%;
+        }
+        #nube2{
+            width:20%;
+        }
+        #nube3{
+            width:15%
+        }
+        #nube4{
+            width:12%;
+        }
+        #nube5{
+            width:17%;
+        }
+        audio{
+            float:right;
+        }
+        #woody{
+            width: 20%;
+            position:relative;
+            left:80%;
+            top:10%;
+        }
+    </style>
+</head>
+<body onmousemove="mouseMove(event)">
+    <img src="nube1.png" id="nube1" onclick="ratonPulsado(event)">
+    <img src="nube1.png" id="nube1" onclick="ratonPulsado(event)">
+    <img src="nube2.png" id="nube2" onclick="ratonPulsado(event)">
+    <img src="nube3.png" id="nube3" onclick="ratonPulsado(event)">
+    <img src="nube3.png" id="nube3" onclick="ratonPulsado(event)">
+    <img src="nube4.png" id="nube4" onclick="ratonPulsado(event)">
+    <img src="nube5.png" id="nube5" onclick="ratonPulsado(event)">
+    <img src="nube5.png" id="nube5" onclick="ratonPulsado(event)">
+    <img src="nube4.png" id="nube4" onclick="ratonPulsado(event)">
+    <img src="nube4.png" id="nube4" onclick="ratonPulsado(event)">
+    <img src="nube1.png" id="nube1" onclick="ratonPulsado(event)">
+    <img src="nube1.png" id="nube1" onclick="ratonPulsado(event)">
+    <img src="nube2.png" id="nube2" onclick="ratonPulsado(event)">
+    <img src="nube3.png" id="nube3" onclick="ratonPulsado(event)">
+    <img src="nube3.png" id="nube3" onclick="ratonPulsado(event)">
+    <img src="nube4.png" id="nube4" onclick="ratonPulsado(event)">
+    <img src="woody.png" id="woody">
+    <audio controls autoplay loop>  
+            <source src="toystory.mp3" type="audio/mpeg">
+        </audio>  
+</body>
+</html>

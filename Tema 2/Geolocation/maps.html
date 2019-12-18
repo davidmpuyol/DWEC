@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <br>
+    <div id="distancia"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiGjxj-rure4ormHRVZFphhDpOTlsb_nk&callback=initMap"
+        async defer></script>
+    <script>
+        var map;
+        var marker;
+        var posicionActual;
+        var posicionInicial;
+        var primeraVez = true;
+
+        function getDistance(origen, destino){
+
+          var distanceService = new google.maps.DistanceMatrixService();
+          distanceService.getDistanceMatrix({
+            origins: [origen],
+            destinations: [destino],
+            travelMode: "WALKING",
+            unitSystem: google.maps.UnitSystem.METRIC,
+            durationInTraffic: true,
+            avoidHighways: false,
+            avoidTolls: false
+          },
+        function (response, status) {
+            if (status !== google.maps.DistanceMatrixStatus.OK) {
+                console.log('Error:', status);
+            } else {
+                let distancia = response.rows[0].elements[0].distance.text.toString();
+                document.getElementById("distancia").innerHTML = "Te has movido "+distancia+" metros desde la posicion inicial.";
+            }
+        });
+}
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 0, lng: 0},
+              zoom: 8,
+            });
+            var posicion = navigator.geolocation.watchPosition(actualizarPosicion,error);
+        }
+        function actualizarPosicion(pos){
+          if(primeraVez){
+            let posicion = {lat: pos.coords.latitude, lng: pos.coords.longitude};
+            marker = new google.maps.Marker({position: posicion});
+            posicionInicial = marker.position.lat()+","+marker.position.lng();
+            marker.setMap(map);
+            map.setCenter(marker.position);
+            map.setZoom(8);
+            primeraVez = false;
+          }
+          else{
+            marker.setPosition(new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude));
+            marker.setTitle(new Date().toLocaleTimeString());
+            let destino = marker.position.lat()+","+marker.position.lng();
+            let distancia = getDistance(posicionInicial,destino);
+            console.log(distancia);
+          }
+        }
+        function error(error){
+            let mensaje;
+            if(error.PERMISSION_DENIED){
+                mensaje = "Error: permiso denegado";
+            }
+            else if(error.POSITION_UNAVAILABLE){
+                mensaje = "Error: Posición no encontrada";
+            }
+            else if(error.TIMEOUT){
+                mensaje = "Tiempo de espera agotado";
+            }
+            alert(mensaje);
+        }
+        
+        
+    </script>
+    
+  </body>
+</html>

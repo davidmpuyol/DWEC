@@ -1,0 +1,34 @@
+body{
+    height:100%;
+    width: 100%;
+    background-color: #0fbeee;
+}
+#nube1, #nube2,#nube3,#nube4,#nube5{
+    float:left;
+    width: 50px;
+    position:fixed;
+}
+#nube1{
+    width:10%;
+}
+#nube2{
+    width:20%;
+}
+#nube3{
+    width:15%
+}
+#nube4{
+    width:12%;
+}
+#nube5{
+    width:17%;
+}
+audio{
+    float:right;
+}
+#woody{
+    width: 20%;
+    position:absolute;
+    left:80%;
+    top:10%;
+}
